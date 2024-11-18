@@ -5,21 +5,29 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="text-white">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/learn">Start-learning</NavLink>
+        <NavLink to="/learn" className="text-white">
+          Start-learning
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/tutorials">Tutorials</NavLink>
+        <NavLink to="/tutorials" className="text-white">
+          Tutorials
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/about">About-us</NavLink>
+        <NavLink to="/about" className="text-white">
+          About-us
+        </NavLink>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100 font-poppins">
+    <div className="navbar font-poppins mb-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,13 +48,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-secondary_color"
           >
             {links}
           </ul>
         </div>
         <div className="">
-          <a className="btn btn-ghost text-xl">
+          <a className="btn btn-ghost text-xl text-white">
             Lingo Bingo <IoLanguageSharp size={25}></IoLanguageSharp>
           </a>
         </div>
@@ -55,7 +63,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <a className="btn bg-white text-primary_color border border-white hover:bg-white hover:text-secondary_color">
+          Login
+        </a>
       </div>
     </div>
   );
