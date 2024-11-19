@@ -27,7 +27,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar font-poppins mb-5">
+    <div className="navbar font-poppins mb-5 bg-primary_color sticky top-0 z-50 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,7 +53,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className="">
+        <div className="hidden md:block">
           <a className="btn btn-ghost text-xl text-white">
             Lingo Bingo <IoLanguageSharp size={25}></IoLanguageSharp>
           </a>
