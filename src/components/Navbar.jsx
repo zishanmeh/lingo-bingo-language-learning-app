@@ -26,6 +26,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
     <div className="navbar font-poppins mb-5 bg-primary_color sticky top-0 z-50 ">
       <div className="navbar-start">

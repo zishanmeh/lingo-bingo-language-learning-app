@@ -11,7 +11,16 @@ const LessonPage = () => {
     (word) => word.Lesson_no === parseInt(lesson_no, 10)
   );
 
-  console.log(lessonVocabulary);
+  const speakWord = (text) => {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel(); // Stop any ongoing speech
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "pt-PT"; // Portuguese
+      window.speechSynthesis.speak(utterance);
+    } else {
+      console.warn("Speech synthesis not supported in this browser.");
+    }
+  };
   return (
     <div>
       <div>
@@ -24,6 +33,7 @@ const LessonPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center gap-6">
           {lessonVocabulary.map((lesson) => (
             <div
+              onClick={() => speakWord(lesson.word)}
               key={lesson.Id}
               className={`${
                 lesson.difficulty === "easy"
@@ -31,7 +41,7 @@ const LessonPage = () => {
                   : lesson.difficulty === "medium"
                   ? "bg-gradient-to-r from-yellow-300 to-yellow-500"
                   : "bg-gradient-to-r from-red-300 to-red-500"
-              } p-3 rounded-md shadow-md hover:scale-105 transition-all duration-300 flex flex-col gap-4`}
+              } p-3 rounded-md shadow-md hover:scale-105 transition-all duration-300 flex flex-col gap-4 cursor-pointer`}
             >
               <div className="grid grid-cols-2 justify-center items-center">
                 <p className="font-semibold">Word : </p>
