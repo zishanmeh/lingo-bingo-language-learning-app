@@ -21,11 +21,13 @@ const LessonPage = () => {
       console.warn("Speech synthesis not supported in this browser.");
     }
   };
+  const [selectedWord, setSelectedWord] = useState([]);
+  const openModal = (lesson) => {
+    setSelectedWord(lesson); // Update state with clicked word data
+    document.getElementById("my_modal_3").showModal(); // Show modal
+  };
   return (
     <div>
-      <div>
-        <Navbar></Navbar>
-      </div>
       <div className="max-w-7xl w-11/12 mx-auto">
         <h1 className="text-3xl font-bold text-center text-primary_color my-8">
           Lesson No: {lesson_no}
@@ -60,7 +62,12 @@ const LessonPage = () => {
                 <p className="font-bold">{lesson.part_of_speech}</p>
               </div>
               <div className="flex justify-between items-center">
-                <button className="btn btn-sm btn-neutral">When to Say</button>
+                <button
+                  className="btn btn-sm btn-neutral"
+                  onClick={() => openModal(lesson)}
+                >
+                  When to Say
+                </button>
                 <Link
                   className="btn btn-sm btn-accent"
                   onClick={() => navigate(-1)}
@@ -68,13 +75,39 @@ const LessonPage = () => {
                   Go back
                 </Link>
               </div>
+              <dialog id="my_modal_3" className="modal">
+                <div className="modal-box">
+                  <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                      ✕
+                    </button>
+                  </form>
+                  <div>
+                    <div className="grid grid-cols-2 justify-center items-center">
+                      <p className="font-semibold">Word : </p>
+                      <p className="font-bold">{selectedWord.word}</p>
+                    </div>
+                    <div className="grid grid-cols-2 justify-center items-center">
+                      <p className="font-semibold">Meaning : </p>
+                      <p className="font-bold">{selectedWord.meaning}</p>
+                    </div>
+                    <div className="grid grid-cols-2 justify-center items-center">
+                      <p className="font-semibold">When to say : </p>
+                      <p className="font-bold">{selectedWord.when_to_say}</p>
+                    </div>
+                    <div className="grid grid-cols-2 justify-center items-center">
+                      <p className="font-semibold">Example : </p>
+                      <p className="font-bold">{lesson.example}</p>
+                    </div>
+                  </div>
+                </div>
+              </dialog>
             </div>
           ))}
         </div>
       </div>
-      <div className="mt-14">
-        <Footer></Footer>
-      </div>
+      {/* You can open the modal using document.getElementById('ID').showModal() method */}
     </div>
   );
 };

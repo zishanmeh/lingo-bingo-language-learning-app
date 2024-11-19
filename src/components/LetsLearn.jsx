@@ -11,7 +11,7 @@ const LetsLearn = () => {
   };
   return (
     <div className="font-poppins">
-      <h1 className="text-3xl font-bold text-center">
+      <h1 className="text-3xl font-bold text-center text-white">
         Let's Learn Protuguies now!!!
       </h1>
       <div className="grid mt-5 grid-cols-2 lg:grid-cols-5 md:grid-cols-4 justify-between items-center gap-6">
