@@ -7,11 +7,14 @@ import Login from "../pages/Login";
 import Root from "../pages/Root";
 import PrivateRouter from "./PrivateRouter";
 import ProfilePage from "../pages/ProfilePage";
+import UpdateProfile from "../pages/UpdateProfile";
+import Errorpage from "../pages/Errorpage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Errorpage></Errorpage>,
     children: [
       {
         path: "/",
@@ -46,11 +49,19 @@ const Router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <ProfilePage></ProfilePage>,
+        element: (
+          <PrivateRouter>
+            <ProfilePage></ProfilePage>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/update-profile",
-        element: <ProfilePage></ProfilePage>,
+        element: (
+          <PrivateRouter>
+            <UpdateProfile></UpdateProfile>
+          </PrivateRouter>
+        ),
       },
     ],
   },
