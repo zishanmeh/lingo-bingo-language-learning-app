@@ -5,6 +5,8 @@ import LessonPage from "../pages/LessonPage";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Root from "../pages/Root";
+import PrivateRouter from "./PrivateRouter";
+import ProfilePage from "../pages/ProfilePage";
 
 const Router = createBrowserRouter([
   {
@@ -28,7 +30,11 @@ const Router = createBrowserRouter([
           }
           return response.json(); // Return the parsed JSON
         },
-        element: <LessonPage></LessonPage>,
+        element: (
+          <PrivateRouter>
+            <LessonPage></LessonPage>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/auth/register",
@@ -37,6 +43,14 @@ const Router = createBrowserRouter([
       {
         path: "/auth/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage></ProfilePage>,
+      },
+      {
+        path: "/update-profile",
+        element: <ProfilePage></ProfilePage>,
       },
     ],
   },

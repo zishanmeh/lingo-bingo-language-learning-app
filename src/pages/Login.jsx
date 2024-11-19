@@ -2,12 +2,23 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { signInUser, setUser } = useContext(AuthContext);
+  const { signInUser, setUser, signInWithGoogle } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        setUser(result.user);
+        setErrorMessage(null);
+        toast.success("Successfully register with google");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => setErrorMessage(err.message));
+  };
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -84,6 +95,13 @@ const Login = () => {
             Register Now
           </Link>
         </p>
+        <p className="text-center my-3">Or</p>
+        <button
+          className="btn border-gray-500 w-fit mx-auto"
+          onClick={handleGoogleSignIn}
+        >
+          <FcGoogle size={20} /> Login with google
+        </button>
       </div>
     </div>
   );

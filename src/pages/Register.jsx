@@ -4,11 +4,23 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
-  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        setUser(result.user);
+        setErrorMessage(null);
+        toast.success("Successfully register with google");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => setErrorMessage(err.message));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -36,7 +48,6 @@ const Register = () => {
         setUser(user);
         setErrorMessage(null);
         toast.success("Registration successfull!");
-        console.log(result);
         updateUserProfile({ displayName: name, photoURL: photo })
           .then((result) => navigate("/"))
           .catch((err) => setErrorMessage(err.message));
@@ -48,7 +59,7 @@ const Register = () => {
   return (
     <div>
       <div className="min-h-screen flex justify-center items-center">
-        <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
+        <div className="card bg-base-100 w-full max-w-lg shrink-0  p-10">
           <h2 className="font-bold text-center text-2xl">
             Register Your Account
           </h2>
@@ -115,15 +126,22 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-neutral rounded-none">Register</button>
+              <button className="btn btn-neutral rounded-md">Register</button>
             </div>
           </form>
-          <p>
+          <p className="text-center">
             Already have an Account?{" "}
             <Link to="/auth/login" className="hover:underline text-red-500">
               Login Now
             </Link>
           </p>
+          <p className="text-center my-3">Or</p>
+          <button
+            className="btn border-gray-500 w-fit mx-auto"
+            onClick={handleGoogleSignIn}
+          >
+            <FcGoogle size={20} /> Login with google
+          </button>
         </div>
       </div>
     </div>
