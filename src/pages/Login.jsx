@@ -71,7 +71,7 @@ const Login = () => {
       <Helmet>
         <title>Login- Lingo Bingo</title>
       </Helmet>
-      <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
+      <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-md p-10">
         <h2 className="font-bold text-center text-2xl">Login Your Account</h2>
         {errorMessage && (
           <p className="text-red-500 text-center mt-3">{errorMessage}</p>
@@ -125,7 +125,7 @@ const Login = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-neutral rounded-none">Login</button>
+            <button className="btn btn-neutral">Login</button>
           </div>
         </form>
         <p>
