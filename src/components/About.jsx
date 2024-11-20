@@ -9,7 +9,7 @@ const About = () => {
       </Helmet>
       <div className="hero bg-base-200 min-h-screen rounded-md">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={image} className="max-w-xs rounded-lg shadow-2xl" />
           <div className="w-1/2">
             <h1 className="text-5xl font-bold text-primary_color">
               Lingo Bingo
