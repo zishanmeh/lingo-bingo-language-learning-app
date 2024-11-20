@@ -1,6 +1,8 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import image1 from "../assets/learn1.webp";
+import image2 from "../assets/learn2.webp";
 const WhatWeDo = () => {
   useEffect(() => {
     AOS.init({
@@ -17,9 +19,9 @@ const WhatWeDo = () => {
         <div className="flex justify-between items-center gap-12 mb-10 md:flex-row flex-col">
           <div className="w-1/2">
             <img
-              src="https://placehold.co/500x200"
+              src={image1}
               alt=""
-              className="rounded-lg"
+              className="rounded-lg md:h-64 md:w-full object-cover"
               data-aos="flip-left"
             />
           </div>
@@ -37,9 +39,9 @@ const WhatWeDo = () => {
         <div className="flex md:flex-row-reverse justify-between items-center gap-12 mb-10 flex-col">
           <div className="w-1/2">
             <img
-              src="https://placehold.co/500x200"
+              src={image2}
               alt=""
-              className="rounded-lg"
+              className="rounded-lg md:h-64 md:w-full object-cover"
               data-aos="flip-right"
             />
           </div>
@@ -55,9 +57,9 @@ const WhatWeDo = () => {
         <div className="flex justify-between items-center gap-12 md:flex-row flex-col">
           <div className="w-1/2">
             <img
-              src="https://placehold.co/500x200"
+              src={image1}
               alt=""
-              className="rounded-lg"
+              className="rounded-lg md:h-64 md:w-full object-cover"
               data-aos="flip-left"
             />
           </div>

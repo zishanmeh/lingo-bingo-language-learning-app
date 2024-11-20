@@ -11,6 +11,7 @@ import UpdateProfile from "../pages/UpdateProfile";
 import Errorpage from "../pages/Errorpage";
 import Tutorial from "../pages/Tutorial";
 import ForgetPassword from "../pages/ForgetPassword";
+import About from "../components/About";
 
 const Router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const Router = createBrowserRouter([
             <UpdateProfile></UpdateProfile>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/about",
+        element: <About></About>,
       },
     ],
   },
