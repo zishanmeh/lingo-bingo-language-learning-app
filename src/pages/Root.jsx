@@ -10,7 +10,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 const Root = () => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <div className="bg-primary_color min-h-screen font-poppins">
       <header className="mb-10">

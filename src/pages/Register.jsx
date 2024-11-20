@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { createNewUser, setUser, updateUserProfile, signInWithGoogle } =
@@ -49,12 +50,16 @@ const Register = () => {
         setErrorMessage(null);
         toast.success("Registration successfull!");
         updateUserProfile({ displayName: name, photoURL: photo })
-          .then((result) => navigate("/"))
+          .then(() => navigate("/"))
           .catch((err) => setErrorMessage(err.message));
       })
       .catch((err) => {
         setErrorMessage(err.message);
       });
+  };
+  const [showPass, setShowPass] = useState(false);
+  const handleShowPassword = () => {
+    setShowPass(!showPass);
   };
   return (
     <div>
@@ -111,14 +116,28 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                name="password"
-                autoComplete="false"
-                type="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
+              <div className="relative">
+                <input
+                  name="password"
+                  autoComplete="false"
+                  type={showPass ? "text" : "password"}
+                  placeholder="password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                {!showPass ? (
+                  <FaEye
+                    className="absolute top-4 right-3 cursor-pointer"
+                    onClick={handleShowPassword}
+                  ></FaEye>
+                ) : (
+                  <FaEyeSlash
+                    className="absolute top-4 right-3 cursor-pointer"
+                    onClick={handleShowPassword}
+                  ></FaEyeSlash>
+                )}
+              </div>
+
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?

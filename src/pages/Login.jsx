@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signInUser, setUser, signInWithGoogle, forgotPassword, setEmail } =
@@ -60,6 +61,10 @@ const Login = () => {
   //       })
   //       .catch((err) => setErrorMessage(err.message));
   //   };
+  const [showPass, setShowPass] = useState(false);
+  const handleShowPassword = () => {
+    setShowPass(!showPass);
+  };
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
@@ -85,14 +90,27 @@ const Login = () => {
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              className="input input-bordered"
-              autoComplete="false"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPass ? "text" : "password"}
+                name="password"
+                placeholder="password"
+                className="input input-bordered w-full"
+                autoComplete="false"
+                required
+              />
+              {!showPass ? (
+                <FaEye
+                  className="absolute top-4 right-3 cursor-pointer"
+                  onClick={handleShowPassword}
+                ></FaEye>
+              ) : (
+                <FaEyeSlash
+                  className="absolute top-4 right-3 cursor-pointer"
+                  onClick={handleShowPassword}
+                ></FaEyeSlash>
+              )}
+            </div>
             <label className="label">
               <Link
                 className="label-text-alt link link-hover"
