@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const ForgetPassword = () => {
   const { email, setEmail, forgotPassword } = useContext(AuthContext);
@@ -21,6 +22,9 @@ const ForgetPassword = () => {
   };
   return (
     <div className="flex justify-center items-center">
+      <Helmet>
+        <title>Forgot Password- Lingo Bingo</title>
+      </Helmet>
       <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
         <h2 className="font-bold text-center text-2xl">
           Restore Your Password

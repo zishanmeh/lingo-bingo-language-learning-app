@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signInUser, setUser, signInWithGoogle, forgotPassword, setEmail } =
@@ -67,6 +68,9 @@ const Login = () => {
   };
   return (
     <div className="min-h-screen flex justify-center items-center">
+      <Helmet>
+        <title>Login- Lingo Bingo</title>
+      </Helmet>
       <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
         <h2 className="font-bold text-center text-2xl">Login Your Account</h2>
         {errorMessage && (

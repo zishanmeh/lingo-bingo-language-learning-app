@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import LetsLearn from "../components/LetsLearn";
 import Navbar from "../components/Navbar";
+import { Helmet } from "react-helmet";
 
 const StartLearnLayout = () => {
   return (
     <div className="w-11/12 mx-auto max-w-7xl min-h-screen">
+      <Helmet>
+        <title>Learning- Lingo Bingo</title>
+      </Helmet>
       <LetsLearn></LetsLearn>
       <div className="my-14">
         <h1 className="text-center text-white font-bold text-3xl">

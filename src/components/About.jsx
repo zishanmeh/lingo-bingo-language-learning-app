@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import image from "../assets/learn1.webp";
+import { Helmet } from "react-helmet";
 const About = () => {
   return (
     <div>
+      <Helmet>
+        <title>About- Lingo Bingo</title>
+      </Helmet>
       <div className="hero bg-base-200 min-h-screen rounded-md">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img src={image} className="max-w-sm rounded-lg shadow-2xl" />

@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const Tutorial = () => {
   return (
     <div>
+      <Helmet>
+        <title>Tutorials- Lingo Bingo</title>
+      </Helmet>
       <div className="">
         <h1 className="text-3xl font-bold text-white text-center">
           Watch our latest tutorial

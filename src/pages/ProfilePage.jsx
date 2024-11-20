@@ -2,11 +2,15 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
+import { Helmet } from "react-helmet";
 
 const ProfilePage = () => {
   const { user } = useContext(AuthContext);
   return (
     <div className="flex justify-center items-center">
+      <Helmet>
+        <title>Profile- Lingo Bingo</title>
+      </Helmet>
       {user ? (
         <div className="bg-white p-10 flex flex-col justify-center items-center rounded-lg shadow-md gap-4">
           <img

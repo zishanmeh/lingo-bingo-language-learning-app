@@ -6,6 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createNewUser, setUser, updateUserProfile, signInWithGoogle } =
@@ -63,6 +64,9 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Register- Lingo Bingo</title>
+      </Helmet>
       <div className="min-h-screen flex justify-center items-center">
         <div className="card bg-base-100 w-full max-w-lg shrink-0  p-10">
           <h2 className="font-bold text-center text-2xl">

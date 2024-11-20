@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UpdateProfile = () => {
   const { setUser, updateUserProfile } = useContext(AuthContext);
@@ -20,6 +21,9 @@ const UpdateProfile = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Update Profile- Lingo Bingo</title>
+      </Helmet>
       <div className="min-h-screen flex justify-center items-center">
         <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
           <h2 className="font-bold text-center text-2xl">
