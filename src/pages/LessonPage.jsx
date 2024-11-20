@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const LessonPage = () => {
   const navigate = useNavigate();
@@ -10,6 +12,12 @@ const LessonPage = () => {
   const lessonVocabulary = vocabulary.filter(
     (word) => word.Lesson_no === parseInt(lesson_no, 10)
   );
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
   const speakWord = (text) => {
     if ("speechSynthesis" in window) {
@@ -37,6 +45,8 @@ const LessonPage = () => {
             <div
               onClick={() => speakWord(lesson.word)}
               key={lesson.Id}
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-center"
               className={`${
                 lesson.difficulty === "easy"
                   ? "bg-gradient-to-r from-green-300 to-green-500"

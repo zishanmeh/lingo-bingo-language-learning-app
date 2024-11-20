@@ -5,8 +5,10 @@ import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { signInUser, setUser, signInWithGoogle } = useContext(AuthContext);
+  const { signInUser, setUser, signInWithGoogle, forgotPassword, setEmail } =
+    useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
+
   const location = useLocation();
   const navigate = useNavigate();
   const handleGoogleSignIn = () => {
@@ -47,6 +49,17 @@ const Login = () => {
         setErrorMessage(err.message);
       });
   };
+  //   const handleForgotPassword = () => {
+  //     if (!email) {
+  //       toast.error("Please enter your email to reset the password");
+  //       return;
+  //     }
+  //     forgotPassword(email)
+  //       .then(() => {
+  //         toast.success("Password reset email sent");
+  //       })
+  //       .catch((err) => setErrorMessage(err.message));
+  //   };
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
@@ -63,6 +76,7 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
               className="input input-bordered"
               required
             />
@@ -80,9 +94,12 @@ const Login = () => {
               required
             />
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
+              <Link
+                className="label-text-alt link link-hover"
+                to="/forget-password"
+              >
                 Forgot password?
-              </a>
+              </Link>
             </label>
           </div>
           <div className="form-control mt-6">

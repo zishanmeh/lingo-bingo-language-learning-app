@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const LetsLearn = () => {
   const lessons = Array.from(
@@ -9,6 +12,12 @@ const LetsLearn = () => {
   const handleCardClick = (lessonNo) => {
     navigate(`/lesson/${lessonNo}`);
   };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   return (
     <div className="font-poppins">
       <h1 className="text-3xl font-bold text-center text-white">
@@ -18,6 +27,7 @@ const LetsLearn = () => {
         {lessons.map((lesson, idx) => (
           <div
             onClick={() => handleCardClick(idx + 1)}
+            data-aos="zoom-in-up"
             className="text-xl btn font-bold hover:bg-secondary_color bg-primary_color px-4 py-3 rounded-md text-white"
             key={idx}
           >

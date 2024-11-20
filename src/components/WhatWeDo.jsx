@@ -1,4 +1,13 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const WhatWeDo = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1200, // Animation duration in ms
+      once: false, // Animation happens only once on scroll
+    });
+  }, []);
   return (
     <div>
       <h1 className="text-center text-4xl font-bold text-white">
@@ -11,10 +20,11 @@ const WhatWeDo = () => {
               src="https://placehold.co/500x200"
               alt=""
               className="rounded-lg"
+              data-aos="flip-left"
             />
           </div>
           <div className="w-1/2">
-            <p className="text-white">
+            <p className="text-white" data-aos="fade-left">
               At Lingo Bingo, we believe that learning a new language should be
               fun, engaging, and effective! Our platform is your ultimate
               destination for mastering vocabulary, the cornerstone of any
@@ -30,10 +40,11 @@ const WhatWeDo = () => {
               src="https://placehold.co/500x200"
               alt=""
               className="rounded-lg"
+              data-aos="flip-right"
             />
           </div>
           <div className="w-1/2">
-            <p className="text-white">
+            <p className="text-white" data-aos="fade-right">
               Dive into interactive exercises, challenge yourself with
               vocabulary games, and track your progress—all while having a
               blast. With Lingo Bingo, you'll turn words into your greatest
@@ -47,10 +58,11 @@ const WhatWeDo = () => {
               src="https://placehold.co/500x200"
               alt=""
               className="rounded-lg"
+              data-aos="flip-left"
             />
           </div>
           <div className="w-1/2">
-            <p className="text-white">
+            <p className="text-white" data-aos="fade-left">
               Our mission is simple: to make language learning accessible and
               enjoyable for everyone. Whether you're preparing for travel,
               advancing your career, or just exploring a new passion, we’re here
