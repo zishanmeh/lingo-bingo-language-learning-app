@@ -2,7 +2,7 @@
 
 **Lingo Bingo** is an interactive web application designed to help users learn Portuguese vocabulary in a fun and engaging way. The app provides users with vocabulary lessons, dynamic pronunciation, and smooth animations for an immersive learning experience. It features easy navigation, authentication, and audio feedback for each word, making language learning more enjoyable and efficient.
 
-[**Live Demo**](https://www.zishan-lingo-bingo.netlify.app/)
+[**Live Demo**](https://zishan-lingo-bingo.netlify.app/)
 
 ## Features
 
